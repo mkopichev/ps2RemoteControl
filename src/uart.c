@@ -85,11 +85,11 @@ void uartTransmitDec(int16_t val) {
 }
 
 // transmit binary value from mk to terminal
-void uartTransmitBin(uint8_t val) {
+void uartTransmitBin(uint16_t val) {
 
     uartTransmitByte('b');
     if(val != 0) {
-        for(uint8_t i = (1 << 7); i >= 1; i >>= 1) {
+        for(uint16_t i = (1 << 15); i >= 1; i >>= 1) {
             if(val & i)
                 uartTransmitDec(1);
             else
@@ -98,7 +98,7 @@ void uartTransmitBin(uint8_t val) {
     }
     // if value is zero just return zero
     else
-        uartTransmitDec(00000000);
+        uartTransmitStr("0000000000000000");
 }
 
 // transmit hex value from mk to terminal

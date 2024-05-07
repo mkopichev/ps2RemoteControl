@@ -18,5 +18,6 @@ void initAll(void) {
     serviceLedInit();
     uartInit();
     spiInit();
+    remoteInit();
     _delay_ms(100);
 }

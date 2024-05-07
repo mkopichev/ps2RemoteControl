@@ -3,18 +3,18 @@
 int main(void) {
 
     initAll();
-    
+
     while(1) {
 
-        uartTransmitBin(spiExchangeByte(0x01));
+        uartTransmitBin(remoteGetButtonsState());
         uartTransmitStr("\t");
-        uartTransmitBin(spiExchangeByte(0x42));
-        uartTransmitStr("\t");
-        uartTransmitBin(spiExchangeByte(0x00));
-        uartTransmitStr("\t");
-        uartTransmitBin(spiExchangeByte(0x00));
-        uartTransmitStr("\t");
-        uartTransmitBin(spiExchangeByte(0x00));
+
+        uint8_t *analogData = remoteGetSticksState();
+
+        for(uint8_t i = 0; i <= 3; i++) {
+            uartTransmitDec(analogData[i]);
+            uartTransmitStr("\t");
+        }
         uartTransmitStr("\r\n");
     }
 }

@@ -21,7 +21,7 @@ void uartTransmitStr(char *string);
 void uartTransmitDec(int16_t val);
 
 // transmit binary value from mk to terminal
-void uartTransmitBin(uint8_t val);
+void uartTransmitBin(uint16_t val);
 
 // transmit hex value from mk to terminal
 void uartTransmitHex(uint8_t val);
